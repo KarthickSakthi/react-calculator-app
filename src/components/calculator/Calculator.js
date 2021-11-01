@@ -3,20 +3,20 @@ import style from './Calculator.module.css'
 
 const Calculator=()=>{
    
-    const[calc,setCalc]=useState("");
+    const[input,setInput]=useState("");
     const[result,setResult]=useState("");
     const oper=['*','+','-','/','.','%']
-    const updateCalc=value=>{
+    const displayCalci=value=>{
         try{
-        if((oper.includes(value) && calc==='') || 
-        (oper.includes(value) && oper.includes(calc.slice(-1)))){
+        if((oper.includes(value) && input==='') || 
+        (oper.includes(value) && oper.includes(input.slice(-1)))){
                   return;
         }
-        setCalc(calc+value)
+        setInput(input+value)
       
 
         if(!oper.includes(value)){
-              setResult(eval(String(calc)+String(value)).toString());
+              setResult(eval(String(input)+String(value)).toString());
         }}
         catch{
             alert(Error("Octal Values are not Allowed, use Decimal values!"))
@@ -25,51 +25,52 @@ const Calculator=()=>{
        
     }
     const calculate=()=>{
-        setCalc(eval(calc).toString())
+        setInput(eval(input).toString())
     }
     const clear=()=>{
-        if(calc==''){
+        if(input==''){
             return;
         }
-        const value=calc.slice(0,-1);
-        setCalc(value);
+        const value=input.slice(0,-1);
+        setInput(value);
     }
     const clearAll=()=>{
-        setCalc(calc.replace(calc,"0"));
-        setResult(calc.replace(calc,"0"))
+        setInput(input.replace(input,"0"));
+        setResult(input.replace(input,"0"))
     }
     return(
     <div className={style.calculator}>
+         
         <div className={style.display}>
-           {result ? <span>{result}</span> : ''} {calc || '0'}
+           {result ? <span>{result}</span> : ''} {input|| '0'}
         </div>
         <div className={style.operators}>
         <button onClick={clear}>C</button>
          <button onClick={clearAll}>AC</button>
-         <button onClick={()=>updateCalc('%')}>%</button>
-         <button onClick={()=>updateCalc('/')}>/</button>
+         <button onClick={()=>displayCalci('%')}>%</button>
+         <button onClick={()=>displayCalci('/')}>/</button>
         </div>
         <div className={style.digits}>
-         <button onClick={()=>updateCalc('1')}>1</button>
-         <button onClick={()=>updateCalc('2')}>2</button>
-         <button onClick={()=>updateCalc('3')}>3</button>
-         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>updateCalc('*')}>*</button>
+         <button onClick={()=>displayCalci('1')}>1</button>
+         <button onClick={()=>displayCalci('2')}>2</button>
+         <button onClick={()=>displayCalci('3')}>3</button>
+         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>displayCalci('*')}>*</button>
          </div>
          <div className={style.digits}>
-         <button onClick={()=>updateCalc('4')}>4</button>
-         <button onClick={()=>updateCalc('5')}>5</button>
-         <button onClick={()=>updateCalc('6')}>6</button>
-         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>updateCalc('+')}>+</button>
+         <button onClick={()=>displayCalci('4')}>4</button>
+         <button onClick={()=>displayCalci('5')}>5</button>
+         <button onClick={()=>displayCalci('6')}>6</button>
+         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>displayCalci('+')}>+</button>
          </div>
          <div className={style.digits}>
-         <button onClick={()=>updateCalc('7')}>7</button>
-         <button onClick={()=>updateCalc('8')}>8</button>
-         <button onClick={()=>updateCalc('9')}>9</button>
-         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>updateCalc('-')}>-</button>
+         <button onClick={()=>displayCalci('7')}>7</button>
+         <button onClick={()=>displayCalci('8')}>8</button>
+         <button onClick={()=>displayCalci('9')}>9</button>
+         <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={()=>displayCalci('-')}>-</button>
          </div>
          <div className={style.digits}>
-         <button onClick={()=>updateCalc('0')}>0</button>
-         <button onClick={()=>updateCalc('.')}>.</button>
+         <button onClick={()=>displayCalci('0')}>0</button>
+         <button onClick={()=>displayCalci('.')}>.</button>
          <button style={{backgroundColor:'rgb(109, 34, 194)'}} onClick={calculate}>=</button>
         </div>
 
