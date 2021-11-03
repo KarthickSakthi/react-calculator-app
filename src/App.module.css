@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 97vh;
+  height: 100vh;
 }
 .container{
   width: 25%;
@@ -15,7 +15,9 @@ div>h1{
   margin-bottom: 10%;
  }
 body{
-  background-color: rgb(58, 8, 63);
+ height: 100vh;
+background: linear-gradient(to bottom, #201027 0%, #6b0466 100%);
+
 }
 @media(max-width:480px){
   .container{

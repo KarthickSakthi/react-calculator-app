@@ -59,4 +59,16 @@ button:hover{
     flex:1 1 33%;
     background-color: rgb(34, 18, 70);
 }
-
+@media(max-width:480px){
+    .calculator{
+       
+        background-color: rgb(8, 8, 46);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: wheat;
+       
+    }   
+    .display{
+        height: 10vh;
+    }
+}
